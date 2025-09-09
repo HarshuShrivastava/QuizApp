@@ -1,0 +1,47 @@
+
+{% extends 'core/base.html' %}
+{% block content %}
+
+<h2 class="mb-4">Available Quizzes</h2>
+
+<div class="row">
+    {% for quiz in quizzes %}
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{ quiz.title }}</h5>
+                    <p><strong>Category:</strong> {{ quiz.category.name }}</p>
+                    <p><strong>Status:</strong>
+                        {% if quiz.status == 'active' %}
+                            <span class="badge badge-success">Active</span>
+                        {% elif quiz.status == 'hold' %}
+                            <span class="badge badge-warning">On Hold</span>
+                        {% else %}
+                            <span class="badge badge-secondary">Disabled</span>
+                        {% endif %}
+                    </p>
+                    <p><strong>Total Questions:</strong> {{ quiz.total_questions }}</p>
+
+                    {% if user.is_authenticated %}
+                        {% if quiz.status == 'active' %}
+                   <a href="{% url 'start_quiz' quiz.id %}" class="btn btn-success">Start Quiz</a>
+
+                        {% else %}
+                            <div class="alert alert-warning mt-3">
+                                This quiz is not currently active and cannot be attempted.
+                            </div>
+                        {% endif %}
+                        {% else %}
+                            <div class="alert alert-info mt-3">
+                                You must <a href="{% url 'login' %}">login</a> to attempt quizzes.
+                            </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No quizzes found for this category.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

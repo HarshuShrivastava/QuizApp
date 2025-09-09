@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2 class="mb-4">My Quiz Attempts</h2>
+{% if attempts %}
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Quiz</th>
+                <th>Score</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attempt in attempts %}
+            <tr>
+                <td>{{ attempt.quiz.title }}</td>
+                <td>{{ attempt.score }}/{{ attempt.total }}</td>
+
+                <td>{{ attempt.completed_at|date:"d M Y, H:i" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>You haven't attempted any quizzes yet.</p>
+{% endif %}
+{% endblock %}

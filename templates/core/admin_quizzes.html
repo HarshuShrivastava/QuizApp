@@ -1,0 +1,37 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h3>Manage Quizzes</h3>
+
+<a href="{% url 'admin_add_quiz' %}" class="btn btn-primary mb-3">Add Quiz</a>
+<a href="{% url 'upload_quizzes_csv' %}" class="btn btn-secondary mb-3 ml-2">Upload CSV</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th><th>Category</th><th>Status</th><th>Created</th><th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for quiz in quizzes %}
+        <tr>
+            <td>{{ quiz.title }}</td>
+            <td>{{ quiz.category }}</td>
+            <td>
+	{% if quiz.status == "active" %}
+                <span class="badge bg-success p-2 text-white">Active</span>
+            {% elif quiz.status == "hold" %}
+                <span class="badge bg-warning p-2 text-white">On Hold</span>
+            {% else %}
+                <span class="badge bg-secondary p-2 text-white">Disabled</span>
+            {% endif %}
+</td>
+            <td>{{ quiz.created_at }}</td>
+            <td>
+                <a href="{% url 'admin_edit_quiz' quiz.id %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'admin_delete_quiz' quiz.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

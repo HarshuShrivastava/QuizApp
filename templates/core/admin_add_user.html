@@ -1,0 +1,11 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h3>Add New User</h3>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
+    <input type="email" name="email" placeholder="Email" class="form-control mb-2" required>
+    <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
+    <button type="submit" class="btn btn-success">Add User</button>
+</form>
+{% endblock %}

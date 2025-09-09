@@ -1,0 +1,10 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h3>Upload Users via CSV</h3>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="csv_file" class="form-control-file mb-3" required>
+    <button type="submit" class="btn btn-info">Upload CSV</button>
+</form>
+<p class="text-muted mt-2">CSV Format: <code>username,email,password</code></p>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'core/base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Admin Dashboard</h1>
+
+  <div class="mb-3 text-end">
+    <a href="{% url 'admin_manage_quizzes' %}" class="btn btn-success">Manage Quizzes</a>
+  </div>
+
+  <div class="row text-center mb-4">
+    <div class="col-md-4">
+      <div class="card shadow-sm p-3">
+        <h5>Total Users</h5>
+        <p class="display-6">{{ total_users }}</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm p-3">
+        <h5>Total Quizzes</h5>
+        <p class="display-6">{{ total_quizzes }}</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm p-3">
+        <h5>Total Attempts</h5>
+        <p class="display-6">{{ total_attempts }}</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row text-center mb-5">
+    <div class="col-md-6">
+      <a href="{% url 'admin_manage_users' %}" class="text-decoration-none">
+        <div class="card bg-primary text-white shadow-lg p-4 h-100 hover-card">
+          <h4>Manage Users</h4>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-6">
+      <a href="{% url 'admin_manage_quizzes' %}" class="text-decoration-none">
+        <div class="card bg-success text-white shadow-lg p-4 h-100 hover-card">
+          <h4>Manage Quizzes</h4>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  
+
+
+{% endblock %}

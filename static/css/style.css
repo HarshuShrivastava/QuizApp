@@ -1,0 +1,85 @@
+
+body {
+    background: #f0f9ff;
+    font-family: "Poppins", sans-serif;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+
+.navbar {
+    background: linear-gradient(90deg, #00b4d8, #0077b6);
+    border-radius: 0 0 12px 12px;
+}
+
+.navbar a {
+    color: #fff !important;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #000 !important;
+}
+
+
+.card {
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+.btn-primary {
+    background: linear-gradient(90deg, #48cae4, #00b4d8);
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, #00b4d8, #0077b6);
+    transform: translateY(-2px);
+}
+
+
+#timer {
+    background: #fffae6;
+    border: 1px solid #000;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #000;
+}
+
+
+.form-check-input:checked {
+    background-color: #00b4d8;
+    border-color: #00b4d8;
+}
+
+input, select, textarea {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+}
+
+
+.btn-success {
+    color: #fff;
+    background-color:#00b4d8;
+    border-color: #0077b6;
+}
+
+
+.btn-success:hover {
+    background: linear-gradient(90deg, #00b4d8, #0077b6);
+    transform: translateY(-2px);
+}

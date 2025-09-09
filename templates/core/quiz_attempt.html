@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+{% block content %}
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-lg p-4" style="max-width: 900px; width: 100%;">
+    <div class="card-body">
+      <h4 class="mb-3 text-primary">Question {{ question_number }} of {{ total_questions }}</h4>
+      <p class="lead">{{ question.text }}</p>
+
+      <!-- Timer -->
+      <div class="alert alert-warning text-center fw-bold" id="timer" style="font-size: 20px;"></div>
+
+      <!-- Quiz Form -->
+      <form method="post" id="quiz-form">
+        {% csrf_token %}
+        {% for option in options %}
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" name="option" id="option{{ option.id }}" value="{{ option.id }}">
+            <label class="form-check-label" for="option{{ option.id }}">
+              {{ option.text }}
+            </label>
+          </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary w-100 mt-3">Submit Answer</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  let totalTime = 60;  // seconds
+  let timerElement = document.getElementById("timer");
+
+  function updateTimer() {
+    let minutes = Math.floor(totalTime / 60);
+    let seconds = totalTime % 60;
+    timerElement.innerText = ` Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    if (totalTime <= 0) {
+      clearInterval(timerInterval);
+      document.getElementById("quiz-form").submit();
+    }
+    totalTime--;
+  }
+
+  let timerInterval = setInterval(updateTimer, 1000);
+  updateTimer();
+</script>
+
+{% endblock %}

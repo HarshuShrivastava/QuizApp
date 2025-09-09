@@ -1,0 +1,11 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h3>Edit User</h3>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="username" value="{{ user.username }}" class="form-control mb-2" required>
+    <input type="email" name="email" value="{{ user.email }}" class="form-control mb-2" required>
+    <input type="password" name="password" placeholder="New Password (leave blank to keep same)" class="form-control mb-2">
+    <button type="submit" class="btn btn-success">Update User</button>
+</form>
+{% endblock %}

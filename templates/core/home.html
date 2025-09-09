@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="jumbotron text-center bg-light shadow-sm">
+    <p class="greet"><b> Hello, {{ user.username }}!</b> </p>
+    <h1 class="display-4">Welcome to Quiz App</h1>
+    <p class="lead">Test your knowledge by choosing a quiz category.</p>
+</div>
+
+<div class="row">
+    {% for category in categories %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ category.name }}</h5>
+                    <a href="{% url 'category_quizzes' category.id %}" class="btn btn-primary">View Quizzes</a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <div class="col-12 text-center">
+            <p>No categories available.</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
